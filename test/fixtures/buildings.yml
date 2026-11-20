@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  building_no: MyString
+  total_floor: 1
+  excluded_floor: MyText
+  units_per_floor: 1
+  remark: MyText
+
+two:
+  user: two
+  building_no: MyString
+  total_floor: 1
+  excluded_floor: MyText
+  units_per_floor: 1
+  remark: MyText

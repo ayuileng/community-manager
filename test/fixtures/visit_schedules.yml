@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  period_unit: 1
+  times_per_period: 1
+  remind_days_before: 1
+  description: MyText
+  active: false
+
+two:
+  name: MyString
+  period_unit: 1
+  times_per_period: 1
+  remind_days_before: 1
+  description: MyText
+  active: false

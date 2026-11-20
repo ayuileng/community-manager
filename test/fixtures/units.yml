@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  building: one
+  visit_schedule: one
+  unit_no: MyString
+  floor: 1
+  unit_index: 1
+  active: false
+  remark: MyText
+
+two:
+  building: two
+  visit_schedule: two
+  unit_no: MyString
+  floor: 1
+  unit_index: 1
+  active: false
+  remark: MyText

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit: one
+  visit_period: one
+  user: one
+  visited_at: 2026-11-20 13:50:51
+  content: MyText
+
+two:
+  unit: two
+  visit_period: two
+  user: two
+  visited_at: 2026-11-20 13:50:51
+  content: MyText

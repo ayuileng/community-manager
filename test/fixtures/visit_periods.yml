@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit: one
+  visit_schedule: one
+  period_start: 2026-11-20
+  period_end: 2026-11-20
+  due_at: 2026-11-20
+  required_count: 1
+  completed_count: 1
+  status: 1
+  remind_days_before: 1
+  completed_at: 2026-11-20 13:42:17
+
+two:
+  unit: two
+  visit_schedule: two
+  period_start: 2026-11-20
+  period_end: 2026-11-20
+  due_at: 2026-11-20
+  required_count: 1
+  completed_count: 1
+  status: 1
+  remind_days_before: 1
+  completed_at: 2026-11-20 13:42:17
