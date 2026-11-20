@@ -1,14 +1,29 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # 1. 认证（bcrypt 自己实现，Devise 没装）
+  get    "login",  to: "sessions#new"
+  post   "login",  to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # 2. 楼栋：列表 / 单元录入表单 / 创建楼栋+生成单元 / 状态看板
+  resources :buildings, only: [:index, :new, :create, :show, :destroy]
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # 3. 单元：弹窗内容（Turbo Frame）；走访日志嵌套在单元下创建
+  resources :units, only: [:show] do
+    resources :visit_logs, only: [:create]
+  end
+
+  # 4. 走访日志：编辑 / 删除（不需 unit_id）
+  resources :visit_logs, only: [:update, :destroy]
+
+  # 5. 走访规则配置：普通 user 权限，所有登录用户可用
+  resources :visit_schedules, only: [:index, :new, :create, :edit, :update]
+
+  # 6. 数据导出（二期，可先注释）
+  resources :exports, only: [:new, :create] do
+    get :download, on: :member
+  end
+
+  # 首页
+  root "buildings#index"
 end

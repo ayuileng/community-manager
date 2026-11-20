@@ -1,0 +1,28 @@
+<h1>我的楼栋</h1>
+
+<%= link_to "录入新楼栋", new_building_path %>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>楼栋号</th>
+      <th>层数</th>
+      <th>每层单元数</th>
+      <th>单元总数</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @buildings.each do |building| %>
+      <tr>
+        <td><%= building.building_no %></td>
+        <td><%= building.total_floor %></td>
+        <td><%= building.units_per_floor %></td>
+        <td><%= building.units.count %></td>
+        <td><%= link_to "查看单元", building %></td>
+        <td><%= button_to "删除", building_path(building), method: :delete,
+        form: { data: { turbo_confirm: "确定删除该楼栋？所有单元和走访记录将一起删除，不可恢复。" } } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

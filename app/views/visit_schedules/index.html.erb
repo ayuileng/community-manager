@@ -1,0 +1,28 @@
+<h1>走访规则</h1>
+
+<%= link_to "新建规则", new_visit_schedule_path %>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>周期单位</th>
+      <th>次数</th>
+      <th>提前天数</th>
+      <th>状态</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @visit_schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.name %></td>
+        <td><%= VisitSchedule::PERIOD_LABELS[schedule.period_unit] %></td>
+        <td><%= schedule.times_per_period %></td>
+        <td><%= schedule.remind_days_before %></td>
+        <td><%= schedule.active? ? "启用" : "停用" %></td>
+        <td><%= link_to "编辑", edit_visit_schedule_path(schedule) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

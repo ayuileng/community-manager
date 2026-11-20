@@ -1,0 +1,22 @@
+<h1><%= @building.building_no %> 栋</h1>
+
+<p>共 <%= @units.count %> 个单元</p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>楼层</th>
+      <th>单元号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @units.each do |unit| %>
+      <tr>
+        <td><%= unit.floor %></td>
+        <td><%= unit.unit_no %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "返回列表", buildings_path %>

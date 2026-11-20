@@ -1,0 +1,45 @@
+<%= form_with model: @visit_schedule do |f| %>
+    <% if @visit_schedule.errors.any? %>
+        <div style="color: red;">
+            <p>请修正以下问题：</p>
+            <ul>
+                <% @visit_schedule.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div>
+        <%= f.label :name, "规则名称" %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :period_unit, "周期单位" %>
+        <%= f.select :period_unit,
+      VisitSchedule.period_units.keys.map { |k| [VisitSchedule::PERIOD_LABELS[k], k] } %>
+    </div>
+
+    <div>
+        <%= f.label :times_per_period, "每周期走访次数" %>
+        <%= f.number_field :times_per_period %>
+    </div>
+
+    <div>
+        <%= f.label :remind_days_before, "提前提醒天数" %>
+        <%= f.number_field :remind_days_before %>
+    </div>
+
+    <div>
+        <%= f.label :description, "规则说明" %>
+        <%= f.text_area :description, rows: 3 %>
+    </div>
+
+    <div>
+        <%= f.check_box :active %>
+        <%= f.label :active, "启用" %>
+    </div>
+
+    <%= f.submit "保存" %>
+<% end %>

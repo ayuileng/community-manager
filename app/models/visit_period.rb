@@ -1,7 +1,7 @@
 class VisitPeriod < ApplicationRecord
   belongs_to :unit
   belongs_to :visit_schedule
-  has_many :visit_logs, dependent: :restrict_with_error
+  has_many :visit_logs, dependent: :destroy
 
   enum status: { pending: 0, in_progress: 1, completed: 2 }, default: :pending
 

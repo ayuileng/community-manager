@@ -44,8 +44,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_20_055051) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "phone"
-    t.integer "role"
-    t.integer "{null: false, default: 0}"
+    t.integer "role", default: 0, null: false
     t.string "password_digest", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false

@@ -1,0 +1,43 @@
+<h1>录入楼栋</h1>
+
+<%= form_with model: @building do |f| %>
+  <% if @building.errors.any? %>
+    <div style="color: red;">
+      <p>请修正以下问题：</p>
+      <ul>
+        <% @building.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :building_no, "楼栋号" %>
+    <%= f.text_field :building_no %>
+  </div>
+
+  <div>
+    <%= f.label :total_floor, "总层数" %>
+    <%= f.number_field :total_floor %>
+  </div>
+
+  <div>
+    <%= f.label :units_per_floor, "每层单元数" %>
+    <%= f.number_field :units_per_floor %>
+  </div>
+
+  <div>
+    <%= f.label :excluded_floor, "排除层号（多个用逗号分隔，如 4,12,没有就留空）" %>
+    <%= f.text_field :excluded_floor, value: Array(@building.excluded_floor).join(",") %>
+  </div>
+
+  <div>
+    <%= f.label :remark, "备注" %>
+    <%= f.text_area :remark, rows: 2 %>
+  </div>
+
+  <%= f.submit "生成单元" %>
+<% end %>
+
+<%= link_to "返回列表", buildings_path %>
